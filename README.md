@@ -34,6 +34,7 @@ Diseñado para analizar las unidades y productos vendidos por vendedor.
   |── Fotos/                            # Contiene las fotos de los vendedores.
   ├── Dashboard (Boxy con foto).svg     # Es el archivo de fondo del lienzo del proyecto.
   ├── Ventas.pbix                       # Archivo que será ejecutado con Power BI Desktop.
+  |—— Demo.gif                          # Demo del proyecto.
   └── README.md                         # Este archivo
 </code>
 
