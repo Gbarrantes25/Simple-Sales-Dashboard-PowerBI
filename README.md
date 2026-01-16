@@ -51,6 +51,9 @@ Diseñado para analizar las unidades y productos vendidos por vendedor.
 <details>
   <summary>Escritorio</summary>
   <img width="1777" height="978" alt="image" src="https://github.com/user-attachments/assets/73e82d59-e64d-4c56-8c8a-3e1232fdb825" />
+
+  
+  ![Animation3](https://github.com/user-attachments/assets/fd509d4a-eeef-4206-959d-5f0a31f5e1ab)
 </details>
 <details>
   <summary>Mobile</summary>
