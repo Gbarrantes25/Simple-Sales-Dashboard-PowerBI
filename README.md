@@ -1,7 +1,14 @@
 # Simple Sales Dashboard
 
 ## 📃 Descripción General
-Diseñado para analizar las unidades y productos vendidos por vendedor.
+Dashboard de Ventas Simplificado desarrollado en Power BI, diseñado para analizar unidades y productos vendidos por representante de ventas de manera clara y directa.
+Este proyecto transforma datos de transacciones comerciales en información visual interactiva mediante:
+
+- 📊 Vista Única: Resumen de ventas por vendedor con KPIs principales.
+- 👥 Fotos de Vendedores: Imágenes personalizadas para cada representante.
+- 🎨 Diseño Personalizado: Lienzo con fondo personalizado (Boxy sections).
+- 📈 KPIs de Ventas: 3 medidas DAX (unidades, productos distintos, porcentajes).
+- 🖱️ Navegación Interactiva: Segmentación de datos y botones con imágenes.
 
 ## 📊 Contenido del proyecto
 - Página de resumen: Ofrece una vista consolidada de toda la infortación relevante de los vendedores de la organización.
