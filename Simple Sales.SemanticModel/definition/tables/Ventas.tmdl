@@ -1,0 +1,58 @@
+table Ventas
+	lineageTag: 5d19c70e-4f2d-4084-9c0b-741c80714734
+
+	column Fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2255d5ff-1f1f-4ca8-a1d9-0f16708c411e
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		variation Variación
+			isDefault
+			relationship: 78707ca7-12ee-41c1-bbc6-2c0f2c1d0b73
+			defaultHierarchy: LocalDateTable_b6613bff-47b2-455b-b49a-90df5ffa6c69.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Representante
+		dataType: string
+		lineageTag: 483e0d32-8b04-4dc0-b300-26078301a272
+		summarizeBy: none
+		sourceColumn: Representante
+
+		annotation SummarizationSetBy = Automatic
+
+	column CódigoProducto
+		dataType: string
+		lineageTag: d3df828e-031a-4dcc-8803-250be02a2629
+		summarizeBy: none
+		sourceColumn: CódigoProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unidades
+		dataType: int64
+		formatString: 0
+		lineageTag: c8143bd1-41b2-4f77-816a-eccda18323eb
+		summarizeBy: sum
+		sourceColumn: Unidades
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ventas = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Gbarrantes25/Sales-Dashboard-PowerBI/refs/heads/main/Fuentes%20de%20datos/Ventas.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Fecha", type date}, {"Representante", type text}, {"CódigoProducto", type text}, {"Unidades", Int64.Type}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

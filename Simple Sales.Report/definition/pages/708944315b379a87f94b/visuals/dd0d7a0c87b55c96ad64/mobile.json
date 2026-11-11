@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.9.0/schema.json",
+  "position": {
+    "x": 18,
+    "y": 340,
+    "z": 3,
+    "height": 160,
+    "width": 162
+  },
+  "objects": {
+    "image": [],
+    "selection": [],
+    "layout": [],
+    "overFlow": [],
+    "value": [],
+    "actionState": [
+      {
+        "properties": {
+          "IsButtonsAdvanced": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [],
+    "shapeCustomRectangle": [],
+    "fillCustom": [],
+    "general": [],
+    "outline": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ]
+  }
+}

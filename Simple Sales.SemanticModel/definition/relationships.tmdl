@@ -1,0 +1,13 @@
+relationship 78707ca7-12ee-41c1-bbc6-2c0f2c1d0b73
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ventas.Fecha
+	toColumn: LocalDateTable_b6613bff-47b2-455b-b49a-90df5ffa6c69.Date
+
+relationship AutoDetected_5c26e1f1-e1f9-4f82-8234-b3807aa096cd
+	fromColumn: Ventas.CódigoProducto
+	toColumn: Productos.CódigoProducto
+
+relationship 22a690aa-9ad1-2315-551d-762bd3fbaf97
+	fromColumn: Ventas.Representante
+	toColumn: Vendedores.Representante
+

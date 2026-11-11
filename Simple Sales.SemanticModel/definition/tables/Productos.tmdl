@@ -1,0 +1,64 @@
+table Productos
+	lineageTag: 2976abc5-900f-4ddb-a4bd-b51003e531a9
+
+	column CódigoProducto
+		dataType: string
+		lineageTag: 56bb2b55-1979-4646-a776-f81222441e36
+		summarizeBy: none
+		sourceColumn: CódigoProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descripción
+		dataType: string
+		lineageTag: eac57e50-822f-4fa7-8e1f-a8e487c559aa
+		summarizeBy: none
+		sourceColumn: Descripción
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Precio de venta'
+		dataType: decimal
+		formatString: "S/"\ #,0.###############;-"S/"\ #,0.###############;"S/"\ #,0.###############
+		lineageTag: 64211771-51c0-4bc2-bb06-2a8412c3f60e
+		summarizeBy: none
+		sourceColumn: Precio de venta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	column 'Costo de venta'
+		dataType: decimal
+		formatString: "S/"\ #,0.###############;-"S/"\ #,0.###############;"S/"\ #,0.###############
+		lineageTag: a04813c9-dabf-4686-8c23-d661b7751ea6
+		summarizeBy: none
+		sourceColumn: Costo de venta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-PE"}
+
+	column Almacen
+		dataType: int64
+		formatString: 0
+		lineageTag: 55c4593e-5c09-48bb-874e-78910ee7abc1
+		summarizeBy: none
+		sourceColumn: Almacen
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Productos = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Gbarrantes25/Sales-Dashboard-PowerBI/refs/heads/main/Fuentes%20de%20datos/Productos.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"CódigoProducto", type text}, {"Descripción", type text}, {"Precio de venta", Currency.Type}, {"Costo de venta", Currency.Type}, {"Almacen", Int64.Type}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

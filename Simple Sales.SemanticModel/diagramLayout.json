@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 379,
+            "y": 0
+          },
+          "nodeIndex": "Ventas",
+          "nodeLineageTag": "5d19c70e-4f2d-4084-9c0b-741c80714734",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 146,
+            "y": 214
+          },
+          "nodeIndex": "Productos",
+          "nodeLineageTag": "2976abc5-900f-4ddb-a4bd-b51003e531a9",
+          "size": {
+            "height": 212,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 594,
+            "y": 237
+          },
+          "nodeIndex": "Vendedores",
+          "nodeLineageTag": "a6f6f6ec-3cdd-4527-922e-3aac0535a58d",
+          "size": {
+            "height": 186,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 873,
+            "y": 0
+          },
+          "nodeIndex": "Medida",
+          "nodeLineageTag": "77de1b18-9163-4f3d-928d-58ad3c10cfcc",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

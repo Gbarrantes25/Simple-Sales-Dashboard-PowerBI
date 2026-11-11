@@ -1,0 +1,29 @@
+table Medida
+	lineageTag: 77de1b18-9163-4f3d-928d-58ad3c10cfcc
+
+	measure 'Productos Distintos' = DISTINCTCOUNT(Ventas[CódigoProducto])
+		formatString: 0
+		lineageTag: c9abd2fa-41c0-49a0-ab4b-2161ca8c1799
+
+	measure 'Unidades Vendidas' = SUM(Ventas[Unidades])
+		formatString: 0
+		lineageTag: 4ba23361-2396-4cf4-9064-f837c3c31cc4
+
+	measure 'Porcentaje de Ventas' = DIVIDE([Unidades Vendidas],CALCULATE([Unidades Vendidas],ALL(Vendedores[Representante])))
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: fe40464f-89a2-4880-8caf-e168c31d0420
+
+	partition Medida = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

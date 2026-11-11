@@ -1,0 +1,42 @@
+table Vendedores
+	lineageTag: a6f6f6ec-3cdd-4527-922e-3aac0535a58d
+
+	column Representante
+		dataType: string
+		lineageTag: dd01b46e-b166-494e-ba83-9d4df113b715
+		summarizeBy: none
+		sourceColumn: Representante
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ciudad
+		dataType: string
+		lineageTag: 00d4d1f3-11be-42df-ac31-5c9e213933ef
+		summarizeBy: none
+		sourceColumn: Ciudad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fotografía
+		dataType: string
+		lineageTag: 98b045bb-1d30-42ad-a46c-dd5e114be47c
+		summarizeBy: none
+		sourceColumn: Fotografía
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Vendedores = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Gbarrantes25/Sales-Dashboard-PowerBI/refs/heads/main/Fuentes%20de%20datos/Vendedores.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo cambiado", [PromoteAllScalars=true]),
+				    #"Tipo cambiado1" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Representante", type text}, {"Ciudad", type text}, {"Fotografía", type text}})
+				in
+				    #"Tipo cambiado1"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+
